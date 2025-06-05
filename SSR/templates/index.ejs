@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <title>La revanche des lettres</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+            crossorigin="anonymous">
+        <link rel="icon" href="/favicon.svg" />
+    </head>
+    <body>
+        <div class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <a href="/" class="navbar-brand">
+                    <img src="/favicon.svg" alt="favicon">
+                    <strong>La revanche des lettres</strong>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <br>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Longueur</th>
+                        <th>Thème</th>
+                        <th>Difficulté</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% for (const level of levels) { %> 
+                        <tr>
+                            <td><%= level.length %> lettres</td>
+                            <td><%= level.theme %></td>
+                            
+                            <td>
+                                <% for (let i=0; i< level.difficulty;i++) { %> 
+                                    &#9733;
+                                <% } %>
+                               
+                            </td>
+                            <td><a href=<%= "level/"+ level.id %>>Démarrer</a></td>
+                        </tr>
+                        
+                    <% } %>
+                    
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

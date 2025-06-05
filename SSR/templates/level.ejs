@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <title>La revanche des lettres</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+            crossorigin="anonymous">
+        <link rel="icon" href="/favicon.svg" />
+    </head>
+    <body>
+        <div class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <a href="/" class="navbar-brand">
+                    <img src="/favicon.svg" alt="favicon">
+                    <strong>La revanche des lettres</strong>
+                </a>
+                <span class="navbar-text"><%= level.theme %> (<%= level.difficulty %> lettres)</span>
+            </div>
+        </div>
+        <div class="container">
+            <br>
+            <div class="col-4 offset-4">
+                <table class="table table-bordered text-center">
+                    <tbody>
+                        <tr>
+                            <% for (const letter of letters) { %>
+                                <td class="text-bg-primary"><%=letter %></td>
+                            <% } %>
+                        </tr>
+                        <% for (const line of lines) { %>
+                        <tr>
+                            <% for (const position of line) { %>
+                            <td class="<% if (position.state) {%>text-bg-success<%} else {%>text-bg-danger<%}%>"><%=position.letter %></td>
+                            <% } %>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <form action="/level/<%=level.id%>" method="POST">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" name="word" >
+                        <button class="btn btn-outline-secondary" type="submit" >Proposer</button>
+                    </div>
+                </form>            
+            </div>
+        </div>
+    </body>
+</html>
